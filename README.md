@@ -1,2 +1,2 @@
 # Karaoke
-Osztott Rendszerek projekt munka
+Projekt Eszközök projekt munka
