@@ -8,27 +8,30 @@ Csapat/termék neve:
 •	Lil’Sing
 
 Táblák:
+
 •	felhasználó: 
 o	Attribútumok:
-	név, 
-	jelszó, 
-	alias, 
-	email,
-	id,
+		név, 
+		jelszó, 
+		alias, 
+		email,
+		id,
+	
 •	dalok: 
 o	Attribútumok:
-	cím, 
-	előadó, 
-	album, 
-	dalszöveg, 
-	ranglista(top 1, 2, 3),
-	id,
+		cím, 
+		előadó, 
+		album, 
+		dalszöveg, 
+		ranglista(top 1, 2, 3),
+		id,
+	
 •	ranglista: 
 o	Attribútumok:
-	felhasználó, 
-	dal, 
-	pont, 
-	(dátum)
+		felhasználó, 
+		dal, 
+		pont, 
+		(dátum)
 
 Feladatok felosztása:
 •	Back-end: Balázs
