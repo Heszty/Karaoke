@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,14 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    C:/Users/naray/Documents/Qt Projects/labirintusos/musicplayer.cpp \
     main.cpp \
     mainwindow.cpp \
     model/model.cpp \
+    musicplayer.cpp \
     view/mainview.cpp
 
 HEADERS += \
+    C:/Users/naray/Documents/Qt Projects/labirintusos/musicplayer.h \
     mainwindow.h \
     model/model.h \
+    musicplayer.h \
     view/mainview.h
 
 # Default rules for deployment.
