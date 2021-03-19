@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QVector>
 
 #include <model/musicplayer.h>
 
@@ -15,5 +17,10 @@ public:
 
 private:
     MusicPlayer* _musicPlayer;
+    QPushButton* _skipSongButton;
+
+public slots:
+    void skipSongButtonClicked();
+
 };
 #endif // MAINWINDOW_H

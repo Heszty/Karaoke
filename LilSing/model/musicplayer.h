@@ -9,11 +9,13 @@ class MusicPlayer : public QDialog
 public:
     MusicPlayer();
 
+    void playMusic(int songIndex = -1);
+    void skipSong();
+
 private:
     QMediaPlayer* _player;
+    QMediaPlaylist* _playlist;
     int volume;
-
-    void playMusic();
 };
 
 #endif // MUSICPLAYER_H
