@@ -11,11 +11,13 @@ public:
 
     void playMusic(int songIndex = -1);
     void skipSong();
+    void lowerVolume();
+    void louderVolume();
 
 private:
     QMediaPlayer* _player;
     QMediaPlaylist* _playlist;
-    int volume;
+    int _volume;
 };
 
 #endif // MUSICPLAYER_H

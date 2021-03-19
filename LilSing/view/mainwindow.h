@@ -18,9 +18,13 @@ public:
 private:
     MusicPlayer* _musicPlayer;
     QPushButton* _skipSongButton;
+    QPushButton* _volumeDown;
+    QPushButton* _volumeUp;
 
 public slots:
     void skipSongButtonClicked();
+    void volumeDownButtonClicked();
+    void volumeUpButtonClicked();
 
 };
 #endif // MAINWINDOW_H

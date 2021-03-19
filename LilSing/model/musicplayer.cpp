@@ -8,8 +8,8 @@ MusicPlayer::MusicPlayer()
     _player = new QMediaPlayer(this);
     _playlist = new QMediaPlaylist();
 
-    volume = 8;
-    _player->setVolume(volume);
+    _volume = 8;
+    _player->setVolume(_volume);
 
     playMusic();
 }
@@ -39,5 +39,15 @@ void MusicPlayer::playMusic(int songIndex)
 void MusicPlayer::skipSong()
 {
     _playlist->next();
+}
+
+void MusicPlayer::lowerVolume()
+{
+    _player->setVolume(--_volume);
+}
+
+void MusicPlayer::louderVolume()
+{
+    _player->setVolume(++_volume);
 }
 
