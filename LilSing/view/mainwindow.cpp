@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "model/musicplayer.h"
 #include <QDebug>
-#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,14 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    QWidget * wdg = new QWidget(this);
-    QVBoxLayout *vlay = new QVBoxLayout(wdg);
+    wdg = new QWidget(this);
+    vlay = new QVBoxLayout(wdg);
     _skipSongButton = new QPushButton("Skip song");
-    _skipSongButton->resize(height()/3, width());
     _volumeDown = new QPushButton("Vol-");
-    _volumeDown->resize(height()/3, width());
     _volumeUp = new QPushButton("Vol+");
-    _volumeUp->resize(height()/3, width());
     vlay->addWidget(_volumeDown);
     vlay->addWidget(_skipSongButton);
     vlay->addWidget(_volumeUp);
@@ -37,6 +33,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete _musicPlayer;
+    delete wdg;
+    delete vlay;
+    delete _skipSongButton;
+    delete _volumeDown;
+    delete _volumeUp;
 }
 
 void MainWindow::skipSongButtonClicked()

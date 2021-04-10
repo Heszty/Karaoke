@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QVBoxLayout>
 #include <QVector>
 
 #include <model/musicplayer.h>
@@ -20,6 +21,9 @@ private:
     QPushButton* _skipSongButton;
     QPushButton* _volumeDown;
     QPushButton* _volumeUp;
+
+    QWidget* wdg;
+    QVBoxLayout *vlay;
 
 public slots:
     void skipSongButtonClicked();

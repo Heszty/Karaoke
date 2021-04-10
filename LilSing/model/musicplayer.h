@@ -8,6 +8,7 @@ class MusicPlayer : public QDialog
 {
 public:
     MusicPlayer();
+    ~MusicPlayer();
 
     void playMusic(int songIndex = -1);
     void skipSong();
