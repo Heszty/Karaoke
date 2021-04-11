@@ -5,7 +5,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    _musicPlayer = new MusicPlayer();
+    _musicPlayer = new MusicPlayer;
+    _videoPlayer = new VideoPlayer;
     qDebug() << "Started";
 
 

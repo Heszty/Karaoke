@@ -8,6 +8,7 @@
 #include <QSlider>
 
 #include <model/musicplayer.h>
+#include <model/videoplayer.h>
 
 class MainWindow : public QMainWindow
 {
@@ -19,6 +20,7 @@ public:
 
 private:
     MusicPlayer* _musicPlayer;
+    VideoPlayer* _videoPlayer;
     QPushButton* _skipSongButton;
     QPushButton* _volumeDown;
     QPushButton* _volumeUp;

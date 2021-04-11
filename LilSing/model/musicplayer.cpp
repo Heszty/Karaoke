@@ -12,8 +12,6 @@ MusicPlayer::MusicPlayer()
     _volume = 8;
     _player->setVolume(_volume);
 
-    VideoPlayer* _vp = new VideoPlayer();
-
     playMusic();
 }
 
@@ -28,7 +26,7 @@ void MusicPlayer::playMusic(int songIndex)
     if(songIndex <= 0)
     {//plays all the songs in random order
         _playlist->clear();
-        // _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/mids/mid1.mid"));
+        _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song1.mp3"));
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song2.mp3"));
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song3.mp3"));
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song4.mp3"));
