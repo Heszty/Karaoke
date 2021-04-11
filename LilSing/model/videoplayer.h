@@ -21,6 +21,7 @@ private:
     QMediaPlayer* _player;
     QVideoWidget* _videoWidget;
     QMediaPlaylist* _playList;
+    QString lyrics;
 };
 
 #endif // VIDEOPLAYER_H
