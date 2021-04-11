@@ -14,6 +14,8 @@ public:
     void skipSong();
     void lowerVolume();
     void louderVolume();
+    void play_pause();
+    void changeSliderValue(int pos);
 
 private:
     QMediaPlayer* _player;

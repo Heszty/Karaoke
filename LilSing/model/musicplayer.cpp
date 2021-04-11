@@ -60,3 +60,18 @@ void MusicPlayer::louderVolume()
     _player->setVolume(++_volume);
 }
 
+void MusicPlayer::play_pause()
+{
+    if(_player->state() == 1){
+        _player->pause();
+    } else {
+        _player->play();
+    }
+}
+
+void MusicPlayer::changeSliderValue(int pos)
+{
+    double tmp = (_player->duration() / 100.0) * pos;
+    _player->setPosition(tmp);
+}
+
