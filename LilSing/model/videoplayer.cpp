@@ -24,3 +24,17 @@ VideoPlayer::~VideoPlayer()
     delete _playList;
 }
 
+void VideoPlayer::play_pause()
+{
+    if(_player->state() == 1){
+        _player->pause();
+    } else {
+        _player->play();
+    }
+}
+
+void VideoPlayer::changeSliderValue(int pos)
+{
+    double tmp = (_player->duration() / 100.0) * pos;
+    _player->setPosition(tmp);
+}

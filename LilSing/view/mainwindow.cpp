@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     _play_stop = new QPushButton("Pause, Play");
     _slider = new QSlider(Qt::Horizontal);
 
+
     vlay->addWidget(_volumeDown);
     vlay->addWidget(_skipSongButton);
     vlay->addWidget(_volumeUp);
@@ -70,9 +71,11 @@ void MainWindow::volumeUpButtonClicked()
 void MainWindow::playButtonClicked()
 {
     _musicPlayer->play_pause();
+    _videoPlayer->play_pause();
 }
 
 void MainWindow::sliderValueChanged()
 {
     _musicPlayer->changeSliderValue(_slider->value());
+    _videoPlayer->changeSliderValue(_slider->value());
 }

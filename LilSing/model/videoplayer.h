@@ -16,6 +16,8 @@ class VideoPlayer : public QDialog
 public:
     VideoPlayer(QWidget *parent = nullptr);
     ~VideoPlayer();
+    void play_pause();
+    void changeSliderValue(int pos);
 
 private:
     QMediaPlayer* _player;
