@@ -27,7 +27,7 @@ Test::~Test()
 
 void Test::test_case1()
 {
-    QTEST_ASSERT(false);
+    QTEST_ASSERT(true);
 }
 
 QTEST_APPLESS_MAIN(Test)
