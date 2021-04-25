@@ -1,5 +1,4 @@
 name: C/C++ CI
-image: mxklb/docker-qt5-deb
 
 on:
   push:
@@ -14,6 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
     - name: qmake
       run: qmake LilSing.pro -r CONFIG+=debug
     - name: make
