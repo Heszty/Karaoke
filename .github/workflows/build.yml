@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
+    - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimediawidgets5
     - name: wherarewe
       run: pwd
     - name: qmake
