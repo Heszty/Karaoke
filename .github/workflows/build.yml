@@ -16,7 +16,7 @@ jobs:
     - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimediawidgets5
     - run: cd LilSing
     - name: qmake
-      run: qmake -qt=qt5
+      run: qmake -makefile
     - name: make
       run: make
     - name: make check
