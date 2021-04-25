@@ -18,9 +18,9 @@ jobs:
       run: pwd
     - name: qmake
       run: qmake LilSing/LilSing.pro -r CONFIG+=debug -o result
+    - run: ls -la
+    - run: cat .makefile
     - name: make
       run: make
     - name: make check
       run: make check
-    - name: make distcheck
-      run: make distcheck
