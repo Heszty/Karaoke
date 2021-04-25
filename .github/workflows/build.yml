@@ -17,7 +17,7 @@ jobs:
     - name: wherarewe
       run: pwd
     - name: qmake
-      run: qmake LilSing/LilSing.pro -r CONFIG+=debug
+      run: qmake LilSing/LilSing.pro -r CONFIG+=debug -o result
     - name: make
       run: make
     - name: make check
