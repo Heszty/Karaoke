@@ -19,4 +19,4 @@ jobs:
     - name: make
       run: cd LilSing && make
     - name: make check
-      run: cd LilSing && ls -la && cat .makefile && make check
+      run: cd LilSing && make check
