@@ -14,6 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev
+    - name: wherarewe
+      run: pwd
     - name: qmake
       run: qmake ../../LilSing/LilSing.pro -r CONFIG+=debug
     - name: make
