@@ -1,11 +1,10 @@
-#include "musicplayer.h"
-#include "videoplayer.h"
-
 #include <QMediaPlaylist>
 #include <QDebug>
 
-MusicPlayer::MusicPlayer()
-{
+#include "musicplayer.h"
+#include "videoplayer.h"
+
+MusicPlayer::MusicPlayer() {
     _player = new QMediaPlayer(this);
     _playlist = new QMediaPlaylist();
 
@@ -15,16 +14,13 @@ MusicPlayer::MusicPlayer()
     playMusic();
 }
 
-MusicPlayer::~MusicPlayer()
-{
+MusicPlayer::~MusicPlayer() {
     delete _player;
     delete _playlist;
 }
 
-void MusicPlayer::playMusic(int songIndex)
-{
-    if(songIndex <= 0)
-    {//plays all the songs in random order
+void MusicPlayer::playMusic(int songIndex) {
+    if (songIndex <= 0) {//plays all the songs in random order
         _playlist->clear();
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song1.mp3"));
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song2.mp3"));
@@ -34,8 +30,7 @@ void MusicPlayer::playMusic(int songIndex)
         _playlist->shuffle();
         _playlist->setPlaybackMode(QMediaPlaylist::Loop);
     }
-    else
-    {
+    else {
         _playlist->clear();
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song" + QString::number(songIndex) + ".mp3"));
     }
@@ -43,33 +38,27 @@ void MusicPlayer::playMusic(int songIndex)
     _player->play();
 }
 
-void MusicPlayer::skipSong()
-{
+void MusicPlayer::skipSong() {
     _playlist->next();
 }
 
-void MusicPlayer::lowerVolume()
-{
+void MusicPlayer::lowerVolume() {
     _player->setVolume(--_volume);
 }
 
-void MusicPlayer::louderVolume()
-{
+void MusicPlayer::louderVolume() {
     _player->setVolume(++_volume);
 }
 
-void MusicPlayer::play_pause()
-{
-    if(_player->state() == 1){
+void MusicPlayer::play_pause() {
+    if (_player->state() == 1) {
         _player->pause();
     } else {
         _player->play();
     }
 }
 
-void MusicPlayer::changeSliderValue(int pos)
-{
+void MusicPlayer::changeSliderValue(int pos) {
     double tmp = (_player->duration() / 100.0) * pos;
     _player->setPosition(tmp);
 }
-

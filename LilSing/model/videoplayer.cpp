@@ -1,8 +1,7 @@
 #include "videoplayer.h"
 
 VideoPlayer::VideoPlayer(QWidget *parent)
-    : QDialog(parent)
-{
+    : QDialog(parent) {
     _player = new QMediaPlayer;
     _videoWidget = new QVideoWidget;
 
@@ -18,23 +17,20 @@ VideoPlayer::VideoPlayer(QWidget *parent)
     qDebug() << "State: " << _player->state();
 }
 
-VideoPlayer::~VideoPlayer()
-{
+VideoPlayer::~VideoPlayer() {
     delete _player;
     delete _playList;
 }
 
-void VideoPlayer::play_pause()
-{
-    if(_player->state() == 1){
+void VideoPlayer::play_pause() {
+    if (_player->state() == 1) {
         _player->pause();
     } else {
         _player->play();
     }
 }
 
-void VideoPlayer::changeSliderValue(int pos)
-{
+void VideoPlayer::changeSliderValue(int pos) {
     double tmp = (_player->duration() / 100.0) * pos;
     _player->setPosition(tmp);
 }

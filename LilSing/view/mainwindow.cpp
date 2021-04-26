@@ -3,8 +3,7 @@
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-{
+    : QMainWindow(parent) {
     _musicPlayer = new MusicPlayer;
     _videoPlayer = new VideoPlayer;
     qDebug() << "Started";
@@ -32,17 +31,24 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Lil'Sing");
     setMinimumHeight(200);
     setMinimumWidth(400);
-    //resize(400,200);
 
-    connect(_skipSongButton, SIGNAL(clicked()), this, SLOT(skipSongButtonClicked()));
-    connect(_volumeDown, SIGNAL(clicked()), this, SLOT(volumeDownButtonClicked()));
-    connect(_volumeUp, SIGNAL(clicked()), this, SLOT(volumeUpButtonClicked()));
-    connect(_play_stop, SIGNAL(clicked()), this, SLOT(playButtonClicked()));
-    connect(_slider, SIGNAL(sliderReleased()), this, SLOT(sliderValueChanged()));
+    connect(_skipSongButton, SIGNAL(clicked()),
+            this, SLOT(skipSongButtonClicked()));
+
+    connect(_volumeDown, SIGNAL(clicked()),
+            this, SLOT(volumeDownButtonClicked()));
+
+    connect(_volumeUp, SIGNAL(clicked()),
+            this, SLOT(volumeUpButtonClicked()));
+
+    connect(_play_stop, SIGNAL(clicked()),
+            this, SLOT(playButtonClicked()));
+
+    connect(_slider, SIGNAL(sliderReleased()),
+            this, SLOT(sliderValueChanged()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete _musicPlayer;
     delete wdg;
     delete vlay;
@@ -51,31 +57,25 @@ MainWindow::~MainWindow()
     delete _volumeUp;
 }
 
-void MainWindow::skipSongButtonClicked()
-{
+void MainWindow::skipSongButtonClicked() {
     _musicPlayer->skipSong();
-    //_musicPlayer->changeSliderValue(0);
     _slider->setSliderPosition(0);
 }
 
-void MainWindow::volumeDownButtonClicked()
-{
+void MainWindow::volumeDownButtonClicked() {
     _musicPlayer->lowerVolume();
 }
 
-void MainWindow::volumeUpButtonClicked()
-{
+void MainWindow::volumeUpButtonClicked() {
     _musicPlayer->louderVolume();
 }
 
-void MainWindow::playButtonClicked()
-{
+void MainWindow::playButtonClicked() {
     _musicPlayer->play_pause();
     _videoPlayer->play_pause();
 }
 
-void MainWindow::sliderValueChanged()
-{
+void MainWindow::sliderValueChanged() {
     _musicPlayer->changeSliderValue(_slider->value());
     _videoPlayer->changeSliderValue(_slider->value());
 }

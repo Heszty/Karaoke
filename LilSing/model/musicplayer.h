@@ -1,12 +1,11 @@
-#ifndef MUSICPLAYER_H
-#define MUSICPLAYER_H
+#ifndef LILSING_MODEL_MUSICPLAYER_H
+#define LILSING_MODEL_MUSICPLAYER_H
 
 #include <QDialog>
 #include <QMediaPlayer>
 
-class MusicPlayer : public QDialog
-{
-public:
+class MusicPlayer : public QDialog {
+ public:
     MusicPlayer();
     ~MusicPlayer();
 
@@ -17,10 +16,10 @@ public:
     void play_pause();
     void changeSliderValue(int pos);
 
-private:
+ private:
     QMediaPlayer* _player;
     QMediaPlaylist* _playlist;
     int _volume;
 };
 
-#endif // MUSICPLAYER_H
+#endif  // LILSING_MODEL_MUSICPLAYER_H

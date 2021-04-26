@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef LILSING_VIEW_MAINWINDOW_H
+#define LILSING_VIEW_MAINWINDOW_H
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -10,15 +10,14 @@
 #include <model/musicplayer.h>
 #include <model/videoplayer.h>
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public:
+ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
+ private:
     MusicPlayer* _musicPlayer;
     VideoPlayer* _videoPlayer;
     QPushButton* _skipSongButton;
@@ -30,12 +29,11 @@ private:
     QWidget* wdg;
     QVBoxLayout *vlay;
 
-public slots:
+ public slots:
     void skipSongButtonClicked();
     void volumeDownButtonClicked();
     void volumeUpButtonClicked();
     void playButtonClicked();
     void sliderValueChanged();
-
 };
-#endif // MAINWINDOW_H
+#endif  // LILSING_VIEW_MAINWINDOW_H

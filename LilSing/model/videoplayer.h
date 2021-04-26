@@ -1,5 +1,5 @@
-#ifndef VIDEOPLAYER_H
-#define VIDEOPLAYER_H
+#ifndef LILSING_MODEL_VIDEOPLAYER_H
+#define LILSING_MODEL_VIDEOPLAYER_H
 
 #include <QDialog>
 
@@ -9,20 +9,19 @@
 #include <QVector>
 #include <QMediaPlaylist>
 
-class VideoPlayer : public QDialog
-{
+class VideoPlayer : public QDialog {
     Q_OBJECT
 
-public:
-    VideoPlayer(QWidget *parent = nullptr);
+ public:
+    explicit VideoPlayer(QWidget *parent = nullptr);
     ~VideoPlayer();
     void play_pause();
     void changeSliderValue(int pos);
 
-private:
+ private:
     QMediaPlayer* _player;
     QVideoWidget* _videoWidget;
     QMediaPlaylist* _playList;
 };
 
-#endif // VIDEOPLAYER_H
+#endif  // LILSING_MODEL_VIDEOPLAYER_H

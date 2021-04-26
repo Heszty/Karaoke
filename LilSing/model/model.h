@@ -1,16 +1,14 @@
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef LILSING_MODEL_MODEL_H
+#define LILSING_MODEL_MODEL_H
 
 #include <QObject>
 
-class Model : public QObject
-{
+class Model : public QObject {
     Q_OBJECT
-public:
+ public:
     explicit Model(QObject *parent = nullptr);
 
-signals:
-
+ signals:
 };
 
-#endif // MODEL_H
+#endif  // LILSING_MODEL_MODEL_H
