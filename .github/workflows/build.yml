@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: linter
-      run: pip install cpplint && cpplint --recursive --filter=-build/include_subdir,-legal/copyright ./
+      run: pip install cpplint && cpplint --recursive --filter=-build/include_subdir,-legal/copyright,-whitespace/line_length ./
     - run: sudo apt-get install -qq libqt5webkit5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5multimediawidgets5
     - name: qmake
       run: qmake Karaoke.pro -r CONFIG+=debug
