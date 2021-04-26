@@ -2,31 +2,24 @@
 
 // add necessary includes here
 
-class Test : public QObject
-{
+class Test : public QObject {
     Q_OBJECT
 
-public:
+ public:
     Test();
     ~Test();
 
-private slots:
+ private slots:
     void test_case1();
-
 };
 
-Test::Test()
-{
-
+Test::Test() {
 }
 
-Test::~Test()
-{
-
+Test::~Test() {
 }
 
-void Test::test_case1()
-{
+void Test::test_case1() {
     QTEST_ASSERT(true);
 }
 

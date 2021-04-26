@@ -1,6 +1,6 @@
-#include "mainwindow.h"
-#include "model/musicplayer.h"
 #include <QDebug>
+
+#include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) {

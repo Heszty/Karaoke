@@ -1,5 +1,5 @@
-#ifndef LILSING_MODEL_MODEL_H
-#define LILSING_MODEL_MODEL_H
+#ifndef LILSING_MODEL_MODEL_H_
+#define LILSING_MODEL_MODEL_H_
 
 #include <QObject>
 
@@ -11,4 +11,4 @@ class Model : public QObject {
  signals:
 };
 
-#endif  // LILSING_MODEL_MODEL_H
+#endif  // LILSING_MODEL_MODEL_H_

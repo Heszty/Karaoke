@@ -1,5 +1,5 @@
-#ifndef LILSING_MODEL_VIDEOPLAYER_H
-#define LILSING_MODEL_VIDEOPLAYER_H
+#ifndef LILSING_MODEL_VIDEOPLAYER_H_
+#define LILSING_MODEL_VIDEOPLAYER_H_
 
 #include <QDialog>
 
@@ -24,4 +24,4 @@ class VideoPlayer : public QDialog {
     QMediaPlaylist* _playList;
 };
 
-#endif  // LILSING_MODEL_VIDEOPLAYER_H
+#endif  // LILSING_MODEL_VIDEOPLAYER_H_

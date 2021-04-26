@@ -20,7 +20,7 @@ MusicPlayer::~MusicPlayer() {
 }
 
 void MusicPlayer::playMusic(int songIndex) {
-    if (songIndex <= 0) {//plays all the songs in random order
+    if (songIndex <= 0) {  // plays all the songs in random order
         _playlist->clear();
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song1.mp3"));
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song2.mp3"));
@@ -29,8 +29,7 @@ void MusicPlayer::playMusic(int songIndex) {
 
         _playlist->shuffle();
         _playlist->setPlaybackMode(QMediaPlaylist::Loop);
-    }
-    else {
+    } else {
         _playlist->clear();
         _playlist->addMedia(QUrl("https://people.inf.elte.hu/wb9alh/songs/song" + QString::number(songIndex) + ".mp3"));
     }

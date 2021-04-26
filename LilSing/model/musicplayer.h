@@ -1,5 +1,5 @@
-#ifndef LILSING_MODEL_MUSICPLAYER_H
-#define LILSING_MODEL_MUSICPLAYER_H
+#ifndef LILSING_MODEL_MUSICPLAYER_H_
+#define LILSING_MODEL_MUSICPLAYER_H_
 
 #include <QDialog>
 #include <QMediaPlayer>
@@ -22,4 +22,4 @@ class MusicPlayer : public QDialog {
     int _volume;
 };
 
-#endif  // LILSING_MODEL_MUSICPLAYER_H
+#endif  // LILSING_MODEL_MUSICPLAYER_H_

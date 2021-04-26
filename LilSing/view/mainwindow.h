@@ -1,5 +1,5 @@
-#ifndef LILSING_VIEW_MAINWINDOW_H
-#define LILSING_VIEW_MAINWINDOW_H
+#ifndef LILSING_VIEW_MAINWINDOW_H_
+#define LILSING_VIEW_MAINWINDOW_H_
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
  public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
  private:
@@ -36,4 +36,4 @@ class MainWindow : public QMainWindow {
     void playButtonClicked();
     void sliderValueChanged();
 };
-#endif  // LILSING_VIEW_MAINWINDOW_H
+#endif  // LILSING_VIEW_MAINWINDOW_H_
