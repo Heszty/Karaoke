@@ -7,9 +7,9 @@
 #include <QSqlError>
 #include <QSqlRecord>
 
-class sqlhandler {
+class Sqlhandler {
  public:
-    explicit sqlhandler(const QString& path);
+    explicit Sqlhandler(const QString& path);
     bool addSong(const QString& title, const QString& album, const QString& artist);
     bool removeSong(const int& id);
     void printSongs();

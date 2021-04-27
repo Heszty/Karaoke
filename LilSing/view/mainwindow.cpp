@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) {
     _musicPlayer = new MusicPlayer;
     _videoPlayer = new VideoPlayer;
+    _sqlHandler = new Sqlhandler(_dbPath);
     qDebug() << "Started";
 
 
@@ -18,12 +19,14 @@ MainWindow::MainWindow(QWidget *parent)
     _play_stop = new QPushButton("Pause, Play");
     _slider = new QSlider(Qt::Horizontal);
 
+    _showDb = new QPushButton("Show Songs");
 
     vlay->addWidget(_volumeDown);
     vlay->addWidget(_skipSongButton);
     vlay->addWidget(_volumeUp);
     vlay->addWidget(_play_stop);
     vlay->addWidget(_slider);
+    vlay->addWidget(_showDb);
 
     wdg->setLayout(vlay);
     setCentralWidget(wdg);
@@ -46,6 +49,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(_slider, SIGNAL(sliderReleased()),
             this, SLOT(sliderValueChanged()));
+
+    connect(_showDb, SIGNAL(clicked()),
+            this, SLOT(showDbButtonClicked()));
 }
 
 MainWindow::~MainWindow() {
@@ -78,4 +84,8 @@ void MainWindow::playButtonClicked() {
 void MainWindow::sliderValueChanged() {
     _musicPlayer->changeSliderValue(_slider->value());
     _videoPlayer->changeSliderValue(_slider->value());
+}
+
+void MainWindow::showDbButtonClicked() {
+    _sqlHandler->printSongs();
 }

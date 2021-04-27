@@ -2,7 +2,7 @@
 
 #include "sqlhandler.h"
 
-sqlhandler::sqlhandler(const QString& path) {
+Sqlhandler::Sqlhandler(const QString& path) {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName(path);
 
@@ -13,7 +13,7 @@ sqlhandler::sqlhandler(const QString& path) {
     }
 }
 
-bool sqlhandler::addSong(const QString& title, const QString& album, const QString& artist) {
+bool Sqlhandler::addSong(const QString& title, const QString& album, const QString& artist) {
    bool success = false;
 
    QSqlQuery query;
@@ -32,7 +32,7 @@ bool sqlhandler::addSong(const QString& title, const QString& album, const QStri
    return success;
 }
 
-bool sqlhandler::removeSong(const int &id) {
+bool Sqlhandler::removeSong(const int &id) {
     bool success = false;
 
     QSqlQuery query;
@@ -47,17 +47,16 @@ bool sqlhandler::removeSong(const int &id) {
     return success;
 }
 
-void sqlhandler::printSongs() {
+void Sqlhandler::printSongs() {
     QSqlQuery query("SELECT * FROM songs");
     int song_id = query.record().indexOf("title");
     int album_id = query.record().indexOf("album");
     int artist_id = query.record().indexOf("artist");
-    qDebug() << "   Title" << "|    Album" << "|    Artist";
-    while (query.next())
-    {
+    qDebug() << "   Title   " << "|    Album    " << "|    Artist";
+    while (query.next()) {
        QString title = query.value(song_id).toString();
        QString album = query.value(album_id).toString();
        QString artist = query.value(artist_id).toString();
-       qDebug() << "        " << title << " | " << album << " | " << artist;
+       qDebug() << title << " | " << album << " | " << artist;
     }
 }

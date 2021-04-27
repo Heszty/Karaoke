@@ -6,9 +6,11 @@
 #include <QVBoxLayout>
 #include <QVector>
 #include <QSlider>
+#include <QCoreApplication>
 
 #include <model/musicplayer.h>
 #include <model/videoplayer.h>
+#include <model/sqlhandler.h>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -18,6 +20,8 @@ class MainWindow : public QMainWindow {
     ~MainWindow();
 
  private:
+    // ------------------------------music/videoplayer--------------------------------------
+
     MusicPlayer* _musicPlayer;
     VideoPlayer* _videoPlayer;
     QPushButton* _skipSongButton;
@@ -26,8 +30,16 @@ class MainWindow : public QMainWindow {
     QPushButton* _play_stop;
     QSlider* _slider;
 
+    // ----------------------------------database-------------------------------------------
+
+    Sqlhandler* _sqlHandler;
+    QPushButton* _showDb;
+    QString _dbPath = QCoreApplication::applicationDirPath() + "/../../LilSing/saves/database/songs.db";
+
+    // -------------------------------------------------------------------------------------
+
     QWidget* wdg;
-    QVBoxLayout *vlay;
+    QVBoxLayout* vlay;
 
  public slots:
     void skipSongButtonClicked();
@@ -35,5 +47,6 @@ class MainWindow : public QMainWindow {
     void volumeUpButtonClicked();
     void playButtonClicked();
     void sliderValueChanged();
+    void showDbButtonClicked();
 };
 #endif  // LILSING_VIEW_MAINWINDOW_H_
