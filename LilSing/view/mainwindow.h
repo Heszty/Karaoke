@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow {
 
     Sqlhandler* _sqlHandler;
     QPushButton* _showDb;
-    QString _dbPath = QCoreApplication::applicationDirPath() + "/../../LilSing/saves/database/songs.db";
+    const QString _dbPath = QCoreApplication::applicationDirPath() + "/../../LilSing/saves/database/songs.db";
 
     // -------------------------------------------------------------------------------------
 

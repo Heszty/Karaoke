@@ -13,23 +13,25 @@ Sqlhandler::Sqlhandler(const QString& path) {
     }
 }
 
+    // addSong() and removeSong() might be obsolete as records are modified via console
+
 bool Sqlhandler::addSong(const QString& title, const QString& album, const QString& artist) {
-   bool success = false;
+    bool success = false;
 
-   QSqlQuery query;
-   query.prepare("INSERT INTO songs (title, album, artist) VALUES (:title, :album, :artist)");
+    QSqlQuery query;
+    query.prepare("INSERT INTO songs (title, album, artist) VALUES (:title, :album, :artist)");
 
-   query.bindValue(":title", title);
-   query.bindValue(":album", album);
-   query.bindValue(":artist", artist);
+    query.bindValue(":title", title);
+    query.bindValue(":album", album);
+    query.bindValue(":artist", artist);
 
-   if(query.exec()) {
-       success = true;
-   } else {
-        qDebug() << "Failed to add song:" << query.lastError();
-   }
+    if ( query.exec() ) {
+        success = true;
+    } else {
+         qDebug() << "Failed to add song:" << query.lastError();
+    }
 
-   return success;
+    return success;
 }
 
 bool Sqlhandler::removeSong(const int &id) {
@@ -40,7 +42,7 @@ bool Sqlhandler::removeSong(const int &id) {
     query.bindValue(":id", id);
     success = query.exec();
 
-    if(!success) {
+    if ( !success ) {
         qDebug() << "Failed to remove song:" << query.lastError();
     }
 
@@ -53,7 +55,7 @@ void Sqlhandler::printSongs() {
     int album_id = query.record().indexOf("album");
     int artist_id = query.record().indexOf("artist");
     qDebug() << "   Title   " << "|    Album    " << "|    Artist";
-    while (query.next()) {
+    while ( query.next() ) {
        QString title = query.value(song_id).toString();
        QString album = query.value(album_id).toString();
        QString artist = query.value(artist_id).toString();
