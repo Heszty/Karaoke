@@ -34,6 +34,16 @@ class MainWindow : public QMainWindow {
 
     Sqlhandler* _sqlHandler;
     QPushButton* _showDb;
+    QPushButton* _listSongs;
+    QPushButton* _selectList;
+
+    QVector<song_struct> _songs;
+    song_struct _song;
+    QString title;
+    QString album;
+    QString artist;
+    QString link;
+
     const QString _dbPath = QCoreApplication::applicationDirPath() + "/../../LilSing/saves/database/songs.db";
 
     // -------------------------------------------------------------------------------------
@@ -48,5 +58,6 @@ class MainWindow : public QMainWindow {
     void playButtonClicked();
     void sliderValueChanged();
     void showDbButtonClicked();
+    void listSongsBtnClicked();
 };
 #endif  // LILSING_VIEW_MAINWINDOW_H_

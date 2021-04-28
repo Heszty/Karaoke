@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     _slider = new QSlider(Qt::Horizontal);
 
     _showDb = new QPushButton("Show Songs");
+    _listSongs = new QPushButton("List Songs");
 
     vlay->addWidget(_volumeDown);
     vlay->addWidget(_skipSongButton);
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     vlay->addWidget(_play_stop);
     vlay->addWidget(_slider);
     vlay->addWidget(_showDb);
+    vlay->addWidget(_listSongs);
 
     wdg->setLayout(vlay);
     setCentralWidget(wdg);
@@ -52,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(_showDb, SIGNAL(clicked()),
             this, SLOT(showDbButtonClicked()));
+
+    connect(_listSongs, SIGNAL(clicked()),
+            this, SLOT(listSongsBtnClicked()));
 }
 
 MainWindow::~MainWindow() {
@@ -88,4 +93,22 @@ void MainWindow::sliderValueChanged() {
 
 void MainWindow::showDbButtonClicked() {
     _sqlHandler->printSongs();
+}
+
+void MainWindow::listSongsBtnClicked() {
+    _songs = _sqlHandler->getSongs();
+
+    int _pos = 0;
+
+    while ( !_songs.isEmpty() ) {
+        _song = _songs.takeFirst();
+
+        _selectList = new QPushButton(this);
+        _selectList->setMinimumWidth(400);
+        _selectList->setText(_song.artist + " - " + _song.title + " (" + _song.album + ")");
+        _selectList->move(_selectList->pos().x(), _selectList->pos().y() + _pos);
+        layout()->addWidget(_selectList);
+        _selectList->show();
+        _pos += 25;
+    }
 }

@@ -51,14 +51,44 @@ bool Sqlhandler::removeSong(const int &id) {
 
 void Sqlhandler::printSongs() {
     QSqlQuery query("SELECT * FROM songs");
+
     int song_id = query.record().indexOf("title");
     int album_id = query.record().indexOf("album");
     int artist_id = query.record().indexOf("artist");
+
     qDebug() << "   Title   " << "|    Album    " << "|    Artist";
+
     while ( query.next() ) {
        QString title = query.value(song_id).toString();
        QString album = query.value(album_id).toString();
        QString artist = query.value(artist_id).toString();
+
        qDebug() << title << " | " << album << " | " << artist;
     }
+}
+
+QVector<song_struct> Sqlhandler::getSongs() {
+    QSqlQuery query("SELECT * FROM songs");
+
+    QVector<song_struct> _vec;
+
+    int song_id = query.record().indexOf("title");
+    int album_id = query.record().indexOf("album");
+    int artist_id = query.record().indexOf("artist");
+
+    while ( query.next() ) {
+       song_struct _song;
+       QString title = query.value(song_id).toString();
+       QString album = query.value(album_id).toString();
+       QString artist = query.value(artist_id).toString();
+
+       _song.artist = artist;
+       _song.title = title;
+       _song.album = album;
+       _song.link = " ";
+
+       _vec.append(_song);
+    }
+
+    return _vec;
 }
