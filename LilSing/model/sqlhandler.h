@@ -26,7 +26,7 @@ class Sqlhandler {
  private:
     QSqlDatabase m_db;
     QVector<song_struct> _vec;
-    //song_struct _songs;
+    // song_struct _songs;
 };
 
 #endif  // LILSING_MODEL_SQLHANDLER_H_
