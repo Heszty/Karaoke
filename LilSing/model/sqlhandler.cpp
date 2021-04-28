@@ -94,3 +94,18 @@ QVector<song_struct> Sqlhandler::getSongs() {
 
     return _vec;
 }
+
+QString Sqlhandler::loadSong(QString input) {
+    QSqlQuery query;
+    query.prepare("SELECT url FROM songs WHERE title = :input");
+    query.bindValue(":input", input);
+
+    if ( query.exec() ) {
+        int url_id = query.record().indexOf("url");
+        while (query.next()) {
+            return query.value(url_id).toString();
+        }
+    } else {
+        exit(1);
+    }
+}

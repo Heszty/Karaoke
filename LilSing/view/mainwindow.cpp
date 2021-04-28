@@ -109,7 +109,7 @@ void MainWindow::listSongsBtnClicked() {
 
         _selectList = new QPushButton(this);
         _selectList->setMinimumWidth(400);
-        _selectList->setText(_song.artist + " - " + _song.title + " (" + _song.album + ")");
+        _selectList->setText(_song.title);
         _selectList->move(_selectList->pos().x(), _selectList->pos().y() + _pos);
         connect(_selectList, SIGNAL(clicked()),
                 this, SLOT(songElementClicked()));
@@ -121,6 +121,9 @@ void MainWindow::listSongsBtnClicked() {
 }
 
 void MainWindow::songElementClicked() {
-    QUrl _url = _song.link;
+    QPushButton* buttonSender = qobject_cast<QPushButton*>(sender());
+    QString _sender = buttonSender->text();
+
+    QUrl _url = _sqlHandler->loadSong(_sender);
     QDesktopServices::openUrl(_url);
 }
