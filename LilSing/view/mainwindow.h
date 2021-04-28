@@ -7,6 +7,9 @@
 #include <QVector>
 #include <QSlider>
 #include <QCoreApplication>
+#include <QDockWidget>
+#include <QDesktopServices>
+#include <QUrl>
 
 #include <model/musicplayer.h>
 #include <model/videoplayer.h>
@@ -36,6 +39,8 @@ class MainWindow : public QMainWindow {
     QPushButton* _showDb;
     QPushButton* _listSongs;
     QPushButton* _selectList;
+    QGridLayout* _songLayout;
+    QDockWidget* _songList;
 
     QVector<song_struct> _songs;
     song_struct _song;
@@ -51,6 +56,9 @@ class MainWindow : public QMainWindow {
     QWidget* wdg;
     QVBoxLayout* vlay;
 
+ signals:
+    void linkBtnClicked();
+
  public slots:
     void skipSongButtonClicked();
     void volumeDownButtonClicked();
@@ -59,5 +67,6 @@ class MainWindow : public QMainWindow {
     void sliderValueChanged();
     void showDbButtonClicked();
     void listSongsBtnClicked();
+    void songElementClicked();
 };
 #endif  // LILSING_VIEW_MAINWINDOW_H_

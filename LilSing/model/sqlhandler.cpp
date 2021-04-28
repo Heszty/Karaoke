@@ -75,17 +75,19 @@ QVector<song_struct> Sqlhandler::getSongs() {
     int song_id = query.record().indexOf("title");
     int album_id = query.record().indexOf("album");
     int artist_id = query.record().indexOf("artist");
+    int link_id = query.record().indexOf("url");
 
     while ( query.next() ) {
        song_struct _song;
        QString title = query.value(song_id).toString();
        QString album = query.value(album_id).toString();
        QString artist = query.value(artist_id).toString();
+       QString link = query.value(link_id).toString();
 
        _song.artist = artist;
        _song.title = title;
        _song.album = album;
-       _song.link = " ";
+       _song.link = link;
 
        _vec.append(_song);
     }

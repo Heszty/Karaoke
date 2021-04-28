@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
     _sqlHandler = new Sqlhandler(_dbPath);
     qDebug() << "Started";
 
-
-
     wdg = new QWidget(this);
     vlay = new QVBoxLayout(wdg);
     _skipSongButton = new QPushButton("Skip song");
@@ -97,8 +95,14 @@ void MainWindow::showDbButtonClicked() {
 
 void MainWindow::listSongsBtnClicked() {
     _songs = _sqlHandler->getSongs();
-
     int _pos = 0;
+
+    _songList = new QDockWidget(this);
+    _songList->setAllowedAreas(Qt::RightDockWidgetArea);
+
+    _songLayout = new QGridLayout;
+    _songLayout->setColumnMinimumWidth(0, 500);
+    _songLayout->setHorizontalSpacing(25);
 
     while ( !_songs.isEmpty() ) {
         _song = _songs.takeFirst();
@@ -107,8 +111,16 @@ void MainWindow::listSongsBtnClicked() {
         _selectList->setMinimumWidth(400);
         _selectList->setText(_song.artist + " - " + _song.title + " (" + _song.album + ")");
         _selectList->move(_selectList->pos().x(), _selectList->pos().y() + _pos);
-        layout()->addWidget(_selectList);
+        connect(_selectList, SIGNAL(clicked()),
+                this, SLOT(songElementClicked()));
         _selectList->show();
+
+        _songLayout->addWidget(_selectList);
         _pos += 25;
     }
+}
+
+void MainWindow::songElementClicked() {
+    QUrl _url = _song.link;
+    QDesktopServices::openUrl(_url);
 }
