@@ -102,9 +102,8 @@ QString Sqlhandler::loadSong(QString input) {
 
     if ( query.exec() ) {
         int url_id = query.record().indexOf("url");
-        while (query.next()) {
-            return query.value(url_id).toString();
-        }
+        query.next();
+        return query.value(url_id).toString();
     } else {
         exit(1);
     }
