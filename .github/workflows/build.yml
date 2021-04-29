@@ -22,4 +22,6 @@ jobs:
       run: make
     - name: make check
       run: make check
-    
+    - name: valgrind
+      run: sudo apt-get install valgrind
+    - run: cd LilSing-test && valgrind ./LilSing-test
