@@ -22,6 +22,7 @@ class Sqlhandler {
     bool removeSong(const int& id);
     void printSongs();
     QVector<song_struct> getSongs();
+    QString loadSong(QString input);
 
  private:
     QSqlDatabase m_db;

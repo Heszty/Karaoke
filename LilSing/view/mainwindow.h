@@ -49,7 +49,7 @@ class MainWindow : public QMainWindow {
     QString artist;
     QString link;
 
-    const QString _dbPath = QCoreApplication::applicationDirPath() + "/../../LilSing/saves/database/songs.db";
+    const QString _dbPath = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/saves/database/songs.db";
 
     // -------------------------------------------------------------------------------------
 
