@@ -16,7 +16,6 @@ class Recorder {
 
  private:
     const QString url_string = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/output/output";
-    QUrl _url;
     QAudioRecorder* _recorder;
 };
 

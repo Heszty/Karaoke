@@ -8,10 +8,7 @@ Recorder::Recorder(QObject* parent) {
     audioSettings.setQuality(QMultimedia::HighQuality);
     _recorder->setEncodingSettings(audioSettings);
 
-    _recorder->setAudioInput(_recorder->audioInputs().at(1));
-
-    _url.setUrl(url_string);
-    qDebug() << QUrl::fromLocalFile(url_string);
+    _recorder->setAudioInput(_recorder->audioInputs().at(0));
     _recorder->setOutputLocation(QUrl::fromLocalFile(url_string));
 }
 
