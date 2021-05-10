@@ -10,10 +10,12 @@
 #include <QDockWidget>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QMediaRecorder>
 
 #include <model/musicplayer.h>
 #include <model/videoplayer.h>
 #include <model/sqlhandler.h>
+#include <model/recorder.h>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -27,10 +29,13 @@ class MainWindow : public QMainWindow {
 
     MusicPlayer* _musicPlayer;
     VideoPlayer* _videoPlayer;
+    Recorder* _recorder;
     QPushButton* _skipSongButton;
     QPushButton* _volumeDown;
     QPushButton* _volumeUp;
     QPushButton* _play_stop;
+    QPushButton* _start_recording;
+    QPushButton* _stop_recording;
     QSlider* _slider;
 
     // ----------------------------------database-------------------------------------------
@@ -68,5 +73,7 @@ class MainWindow : public QMainWindow {
     void showDbButtonClicked();
     void listSongsBtnClicked();
     void songElementClicked();
+    void recordButtonClicked();
+    void stopRecordButtonClicked();
 };
 #endif  // LILSING_VIEW_MAINWINDOW_H_
