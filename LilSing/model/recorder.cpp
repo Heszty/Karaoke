@@ -8,18 +8,17 @@ Recorder::Recorder(QObject* parent) {
     audioSettings.setQuality(QMultimedia::HighQuality);
     _recorder->setEncodingSettings(audioSettings);
 
+    _recorder->setAudioInput(_recorder->audioInputs().at(1));
+
     _url.setUrl(url_string);
-    if(_recorder->setOutputLocation(url_string)) {
-        qDebug() << "Helyes location";
-    } else {
-        qDebug() << _recorder->outputLocation();
-    }
+    qDebug() << QUrl::fromLocalFile(url_string);
+    _recorder->setOutputLocation(QUrl::fromLocalFile(url_string));
 }
 
 void Recorder::startRecording() {
     if(_recorder->state() != QAudioRecorder::RecordingState) {
         _recorder->record();
-        qDebug() << "Recording";
+        qDebug() << "Recording started";
     } else {
         _recorder->pause();
         qDebug() << "Recording paused";
