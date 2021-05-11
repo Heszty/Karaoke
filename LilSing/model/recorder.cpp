@@ -28,3 +28,70 @@ void Recorder::stopRecording() {
         qDebug() << "Recording stopped";
     }
 }
+
+void Recorder::readWAV(QString wavFile) {
+    QString _path = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/output/output";
+
+    QFile m_WAVFile;
+    QDir::setCurrent(_path);
+
+    m_WAVFile.setFileName(wavFile);
+    m_WAVFile.open(QIODevice::ReadWrite);
+
+    char* strm = new char(16);
+    QVector<double> m_DATA;
+
+    m_WAVFile.read(4);  // RIFF
+
+    m_WAVFile.read(strm, 4);  // chunk size
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm);
+
+    m_WAVFile.read(strm, 4);  // format
+    // qDebug() << strm;
+
+    m_WAVFile.read(strm, 4);  // subchunk1 id
+    // qDebug() << strm;
+
+    m_WAVFile.read(strm, 4);  // subchunk1 size
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 2);  // audio format
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 2);  // NumChannels
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 4);  // Sample rate
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 4);  // Byte rate
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 2);  // Block Allign
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 2);  // BPS
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    m_WAVFile.read(strm, 4);  // subchunk2 id
+    // qDebug() << strm;
+
+    m_WAVFile.read(strm, 4);  // subchunk2 size
+    // qDebug() << qFromLittleEndian<quint32>((uchar*)strm) ;
+
+    while (!m_WAVFile.atEnd()) {
+        m_WAVFile.read(strm, 2);
+        if (qFromLittleEndian<short>((uchar*)strm)) {
+            m_DATA.append(qFromLittleEndian<short>((uchar*)strm));
+        }
+    }
+
+    int ind = 2000;
+    while (m_DATA.at(ind) == -1) {
+        ind += 100;
+    }
+
+    for (ind; ind + 50 < m_DATA.size(); ind += 50) {
+        qDebug() << m_DATA.at(ind);
+    }
+}

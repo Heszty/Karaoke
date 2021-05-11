@@ -11,6 +11,8 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QMediaRecorder>
+#include <QDir>
+#include <QDirIterator>
 
 #include <model/musicplayer.h>
 #include <model/videoplayer.h>

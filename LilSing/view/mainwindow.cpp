@@ -148,4 +148,13 @@ void MainWindow::recordButtonClicked() {
 
 void MainWindow::stopRecordButtonClicked() {
     _recorder->stopRecording();
+
+    QString _path = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/output/output";
+    QDir _dir(_path);
+    QStringList _filter;
+    _filter << "*.wav";
+
+    QString _name = _dir.entryList(_filter).at(0);
+
+    _recorder->readWAV(_name);
 }

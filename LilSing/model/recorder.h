@@ -4,6 +4,9 @@
 #include <QAudioRecorder>
 #include <QUrl>
 #include <QCoreApplication>
+#include <QFile>
+#include <QtEndian>
+#include <QDir>
 
 class Recorder {
  public:
@@ -13,7 +16,7 @@ class Recorder {
 
     void startRecording();
     void stopRecording();
-
+    void readWAV(QString wavFile);
  private:
     const QString url_string = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/output/output";
     QAudioRecorder* _recorder;
