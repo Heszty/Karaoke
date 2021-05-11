@@ -13,7 +13,7 @@ Recorder::Recorder(QObject* parent) {
 }
 
 void Recorder::startRecording() {
-    if(_recorder->state() != QAudioRecorder::RecordingState) {
+    if (_recorder->state() != QAudioRecorder::RecordingState) {
         _recorder->record();
         qDebug() << "Recording started";
     } else {
@@ -23,7 +23,7 @@ void Recorder::startRecording() {
 }
 
 void Recorder::stopRecording() {
-    if(_recorder->state() != QAudioRecorder::StoppedState) {
+    if (_recorder->state() != QAudioRecorder::StoppedState) {
         _recorder->stop();
         qDebug() << "Recording stopped";
     }
