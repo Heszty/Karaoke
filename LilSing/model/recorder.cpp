@@ -81,8 +81,8 @@ void Recorder::readWAV(QString wavFile) {
 
     while (!m_WAVFile.atEnd()) {
         m_WAVFile.read(strm, 2);
-        if (qFromLittleEndian<short>((uchar*)strm)) {
-            m_DATA.append(qFromLittleEndian<short>((uchar*)strm));
+        if (qFromLittleEndian<int16_t>(reinterpret_cast<uchar*>(strm))) {
+            m_DATA.append(qFromLittleEndian<int16_t>(reinterpret_cast<uchar*>(strm)));
         }
     }
 
@@ -91,7 +91,7 @@ void Recorder::readWAV(QString wavFile) {
         ind += 100;
     }
 
-    for (ind; ind + 50 < m_DATA.size(); ind += 50) {
+    for (ind; ind + 100 < m_DATA.size(); ind += 100) {
         qDebug() << m_DATA.at(ind);
     }
 }
