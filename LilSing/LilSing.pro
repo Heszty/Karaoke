@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
+    model/recorder.cpp \
     model/sqlhandler.cpp \
     model/videoplayer.cpp \
     view/mainwindow.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     model/musicplayer.cpp
 
 HEADERS += \
+    model/recorder.h \
     model/sqlhandler.h \
     model/videoplayer.h \
     view/mainwindow.h \

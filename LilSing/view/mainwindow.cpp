@@ -2,11 +2,15 @@
 
 #include "mainwindow.h"
 
+#define _width 500
+#define _height 800
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) {
     _musicPlayer = new MusicPlayer;
     _videoPlayer = new VideoPlayer;
     _sqlHandler = new Sqlhandler(_dbPath);
+    _recorder = new Recorder();
     qDebug() << "Started";
 
     wdg = new QWidget(this);
@@ -15,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     _volumeDown = new QPushButton("Vol-");
     _volumeUp = new QPushButton("Vol+");
     _play_stop = new QPushButton("Pause, Play");
+    _start_recording = new QPushButton("Start, Pause Recording");
+    _stop_recording = new QPushButton("Stop Recording");
     _slider = new QSlider(Qt::Horizontal);
 
     _showDb = new QPushButton("Show Songs");
@@ -24,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
     vlay->addWidget(_skipSongButton);
     vlay->addWidget(_volumeUp);
     vlay->addWidget(_play_stop);
+    vlay->addWidget(_start_recording);
+    vlay->addWidget(_stop_recording);
     vlay->addWidget(_slider);
     vlay->addWidget(_showDb);
     vlay->addWidget(_listSongs);
@@ -32,8 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(wdg);
 
     setWindowTitle("Lil'Sing");
-    setMinimumHeight(200);
-    setMinimumWidth(400);
+    setMinimumHeight(_height);
+    setMinimumWidth(_width);
 
     connect(_skipSongButton, SIGNAL(clicked()),
             this, SLOT(skipSongButtonClicked()));
@@ -46,6 +54,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(_play_stop, SIGNAL(clicked()),
             this, SLOT(playButtonClicked()));
+
+    connect(_start_recording, SIGNAL(clicked()),
+            this, SLOT(recordButtonClicked()));
+
+    connect(_stop_recording, SIGNAL(clicked()),
+            this, SLOT(stopRecordButtonClicked()));
 
     connect(_slider, SIGNAL(sliderReleased()),
             this, SLOT(sliderValueChanged()));
@@ -126,4 +140,21 @@ void MainWindow::songElementClicked() {
 
     QUrl _url = _sqlHandler->loadSong(_sender);
     QDesktopServices::openUrl(_url);
+}
+
+void MainWindow::recordButtonClicked() {
+    _recorder->startRecording();
+}
+
+void MainWindow::stopRecordButtonClicked() {
+    _recorder->stopRecording();
+
+    QString _path = QCoreApplication::applicationDirPath() + "/../../../Karaoke/LilSing/output/output";
+    QDir _dir(_path);
+    QStringList _filter;
+    _filter << "*.wav";
+
+    QString _name = _dir.entryList(_filter).at(0);
+
+    _recorder->readWAV(_name);
 }
